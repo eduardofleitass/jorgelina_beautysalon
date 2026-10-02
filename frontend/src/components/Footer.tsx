@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-white/5 bg-brand-black">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <!-- Brand -->
+          {/* Brand */}
           <div className="flex items-center gap-3">
             <Scissors size={20} className="text-brand-gold" />
             <span className="font-[family-name:var(--font-serif)] text-lg font-semibold tracking-wider text-brand-white">
@@ -15,7 +15,7 @@ export default function Footer() {
             </span>
           </div>
 
-          <!-- Links -->
+          {/* Links */}
           <div className="flex items-center gap-6">
             <a href="#inicio" className="text-sm text-brand-gray hover:text-brand-gold transition-colors duration-300">Inicio</a>
             <a href="#servicios" className="text-sm text-brand-gray hover:text-brand-gold transition-colors duration-300">Servicios</a>
@@ -23,7 +23,7 @@ export default function Footer() {
             <a href="#contacto" className="text-sm text-brand-gray hover:text-brand-gold transition-colors duration-300">Contacto</a>
           </div>
 
-          <!-- Social -->
+          {/* Social */}
           <div className="flex items-center gap-4">
             <a
               href="https://www.instagram.com/jorgelinabeautysalon"
@@ -43,7 +43,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-white/5 text-center">
           <p className="text-xs text-brand-gray">
-            {currentYear} Jorgelina Beauty Salon. Todos los derechos reservados.
+            &copy; {currentYear} Jorgelina Beauty Salon. Todos los derechos reservados.
           </p>
         </div>
       </div>

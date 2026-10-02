@@ -5,7 +5,7 @@ export default function AboutSection() {
     <section id="nosotros" className="relative py-24 md:py-32 bg-brand-charcoal">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <!-- Left: Content -->
+          {/* Left: Content */}
           <div>
             <span className="text-brand-gold text-xs tracking-[0.3em] uppercase font-medium">
               Sobre Nosotros
@@ -25,7 +25,7 @@ export default function AboutSection() {
               duraderos y saludables para tu cabello y piel.
             </p>
 
-            <!-- Stats -->
+            {/* Stats */}
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center">
                 <span className="block font-[family-name:var(--font-serif)] text-3xl font-bold text-brand-gold">7+</span>
@@ -42,7 +42,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <!-- Right: Info Cards -->
+          {/* Right: Info Cards */}
           <div className="space-y-6">
             <div className="flex items-start gap-5 p-6 border border-white/5 bg-brand-black/30">
               <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-brand-gold/30 text-brand-gold">
@@ -71,7 +71,7 @@ export default function AboutSection() {
               </div>
               <div>
                 <h4 className="font-semibold text-brand-white mb-1">Especialidad</h4>
-                <p className="text-sm text-brand-gray">Especialista en Color · Nails · Makeup</p>
+                <p className="text-sm text-brand-gray">Especialista en Color &middot; Nails &middot; Makeup</p>
               </div>
             </div>
           </div>

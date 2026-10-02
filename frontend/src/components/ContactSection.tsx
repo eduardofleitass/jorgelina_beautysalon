@@ -39,7 +39,7 @@ export default function ContactSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          <!-- Contact Info -->
+          {/* Contact Info */}
           <div className="lg:col-span-2 space-y-8">
             <div className="p-6 border border-white/5 bg-brand-charcoal/50">
               <h3 className="font-[family-name:var(--font-serif)] text-xl font-semibold mb-6">
@@ -91,7 +91,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <!-- Form -->
+          {/* Form */}
           <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}

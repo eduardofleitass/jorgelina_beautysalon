@@ -6,7 +6,7 @@ const services = [
     title: 'Coloracion',
     subtitle: 'Especialista en Color',
     description:
-      'Balayage, mechas, rubios platino, coloraciones fantasía y correcciones de color. Tecnicas personalizadas para realzar tu belleza natural.',
+      'Balayage, mechas, rubios platino, coloraciones fantasia y correcciones de color. Tecnicas personalizadas para realzar tu belleza natural.',
     features: ['Balayage', 'Mechas', 'Rubios Platino', 'Color Fantasy'],
   },
   {
@@ -31,7 +31,7 @@ export default function ServicesSection() {
   return (
     <section id="servicios" className="relative py-24 md:py-32 bg-brand-charcoal">
       <div className="max-w-6xl mx-auto px-6">
-        <!-- Header -->
+        {/* Header */}
         <div className="text-center mb-16">
           <span className="text-brand-gold text-xs tracking-[0.3em] uppercase font-medium">
             Nuestros Servicios
@@ -45,26 +45,26 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <!-- Cards -->
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, idx) => (
             <div
               key={idx}
               className="group relative p-8 border border-white/5 bg-brand-black/50 hover:border-brand-gold/30 transition-all duration-500"
             >
-              <!-- Icon -->
+              {/* Icon */}
               <div className="mb-6 w-14 h-14 flex items-center justify-center border border-brand-gold/30 text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500">
                 <service.icon size={26} strokeWidth={1.5} />
               </div>
 
-              <!-- Content -->
+              {/* Content */}
               <span className="text-brand-gold text-xs tracking-widest uppercase">{service.subtitle}</span>
               <h3 className="font-[family-name:var(--font-serif)] text-2xl font-semibold mt-2 mb-4">
                 {service.title}
               </h3>
               <p className="text-brand-gray text-sm leading-relaxed mb-6">{service.description}</p>
 
-              <!-- Features -->
+              {/* Features */}
               <ul className="space-y-2">
                 {service.features.map((feat, fidx) => (
                   <li key={fidx} className="flex items-center gap-3 text-sm text-brand-gray-light/70">
@@ -74,7 +74,7 @@ export default function ServicesSection() {
                 ))}
               </ul>
 
-              <!-- Hover line -->
+              {/* Hover line */}
               <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-gold group-hover:w-full transition-all duration-500" />
             </div>
           ))}
