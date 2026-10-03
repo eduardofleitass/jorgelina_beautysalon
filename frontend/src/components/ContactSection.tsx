@@ -71,12 +71,17 @@ export default function ContactSection() {
                   <span className="text-sm">@jorgelinabeautysalon</span>
                 </a>
 
-                <div className="flex items-center gap-4 text-brand-gray">
-                  <div className="w-10 h-10 flex items-center justify-center border border-white/10">
+                <a
+                  href="https://www.google.com/maps/place/Jorgelina+Coiffure/@-25.3078873,-57.6169304,17z/data=!3m1!4b1!4m6!3m5!1s0x945da86dcc5a7be9:0x729d64c83038985b!8m2!3d-25.3078873!4d-57.6169304!16s%2Fg%2F11d_8z63lp?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 text-brand-gray hover:text-brand-gold transition-colors duration-300 group"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center border border-white/10 group-hover:border-brand-gold/50 transition-colors duration-300">
                     <MapPin size={18} />
                   </div>
                   <span className="text-sm">S. Vicente | ASUNCION</span>
-                </div>
+                </a>
 
                 <div className="flex items-start gap-4 text-brand-gray">
                   <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-white/10">

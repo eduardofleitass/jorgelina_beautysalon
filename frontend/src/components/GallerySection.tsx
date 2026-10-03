@@ -1,18 +1,26 @@
 import { Instagram } from 'lucide-react';
 
 const galleryImages = [
+  /* Cabello / Coloracion */
   { src: 'foto1.png', alt: 'Balayage dorado con ondas' },
   { src: 'foto2.jpg', alt: 'Mechas claras en cabello ondulado' },
   { src: 'foto12.jpg', alt: 'Coloracion naranja cobrizo intenso' },
-  { src: 'foto10.jpg', alt: 'Makeup smoky eyes con cabello lacio' },
-  { src: 'foto15.jpg', alt: 'Manicura blanca con glitter' },
   { src: 'foto14.jpg', alt: 'Balayage cenizo con ondas' },
-  { src: 'foto11.jpg', alt: 'Makeup y peinado de novia' },
-  { src: 'foto16.jpg', alt: 'Rubio platino con peinado elegante' },
   { src: 'foto19.jpg', alt: 'Mechas rubias en cabello ondulado' },
-  { src: 'foto21.jpg', alt: 'Manicura azul electrico' },
-  { src: 'foto13.jpg', alt: 'Makeup definido con peinado ondulado' },
   { src: 'foto22.jpg', alt: 'Balayage rubio con ondas suaves' },
+  /* Makeup / Peinado */
+  { src: 'foto10.jpg', alt: 'Makeup smoky eyes con cabello lacio' },
+  { src: 'foto11.jpg', alt: 'Makeup y peinado de novia' },
+  { src: 'foto13.jpg', alt: 'Makeup definido con peinado ondulado' },
+  /* Manicura */
+  { src: 'foto15.jpg', alt: 'Manicura blanca con glitter' },
+  { src: 'foto17.jpg', alt: 'Manicura francesa clasica' },
+  { src: 'foto18.jpg', alt: 'Manicura rosa con verde' },
+  { src: 'foto20.jpg', alt: 'Manicura rosa elegante' },
+  { src: 'foto21.jpg', alt: 'Manicura azul electrico' },
+  /* Pedicura */
+  { src: 'foto23.jpg', alt: 'Pedicura lila con decoracion' },
+  { src: 'foto24.jpg', alt: 'Pedicura roja con brillos' },
 ];
 
 export default function GallerySection() {
@@ -32,7 +40,7 @@ export default function GallerySection() {
           </p>
         </div>
 
-        {/* Grid */}
+        {/* Grid 3x5 + 1 */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {galleryImages.map((img, idx) => (
             <div
@@ -48,7 +56,7 @@ export default function GallerySection() {
               
               {/* Overlay */}
               <div className="absolute inset-0 bg-brand-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <span className="text-brand-white font-medium tracking-wide text-sm">{img.alt}</span>
+                <span className="text-brand-white font-medium tracking-wide text-sm text-center px-4">{img.alt}</span>
               </div>
 
               {/* Corner accent */}
