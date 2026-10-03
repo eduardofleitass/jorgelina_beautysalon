@@ -3,13 +3,16 @@ import { Instagram } from 'lucide-react';
 const galleryImages = [
   { src: 'foto1.png', alt: 'Balayage dorado con ondas' },
   { src: 'foto2.jpg', alt: 'Mechas claras en cabello ondulado' },
-  { src: 'foto3.jpg', alt: 'Peinado con trenzas y makeup' },
-  { src: 'foto4.jpg', alt: 'Manicura magenta con detalles' },
-  { src: 'foto5.jpg', alt: 'Manicura roja con dorado' },
-  { src: 'foto6.jpg', alt: 'Peinado trenzado en cabello rubio' },
-  { src: 'foto7.jpg', alt: 'Peinado con trenzas doradas' },
-  { src: 'foto8.jpg', alt: 'Manicura negra con glitter' },
-  { src: 'foto9.jpg', alt: 'Mechas en cabello largo ondulado' },
+  { src: 'foto12.jpg', alt: 'Coloracion naranja cobrizo intenso' },
+  { src: 'foto10.jpg', alt: 'Makeup smoky eyes con cabello lacio' },
+  { src: 'foto15.jpg', alt: 'Manicura blanca con glitter' },
+  { src: 'foto14.jpg', alt: 'Balayage cenizo con ondas' },
+  { src: 'foto11.jpg', alt: 'Makeup y peinado de novia' },
+  { src: 'foto16.jpg', alt: 'Rubio platino con peinado elegante' },
+  { src: 'foto19.jpg', alt: 'Mechas rubias en cabello ondulado' },
+  { src: 'foto21.jpg', alt: 'Manicura azul electrico' },
+  { src: 'foto13.jpg', alt: 'Makeup definido con peinado ondulado' },
+  { src: 'foto22.jpg', alt: 'Balayage rubio con ondas suaves' },
 ];
 
 export default function GallerySection() {

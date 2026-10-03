@@ -50,7 +50,14 @@ export default function AboutSection() {
               </div>
               <div>
                 <h4 className="font-semibold text-brand-white mb-1">Ubicacion</h4>
-                <p className="text-sm text-brand-gray">S. Vicente | ASUNCION</p>
+                <a 
+                  href="https://www.google.com/maps/place/Jorgelina+Coiffure/@-25.3078873,-57.6169304,17z/data=!3m1!4b1!4m6!3m5!1s0x945da86dcc5a7be9:0x729d64c83038985b!8m2!3d-25.3078873!4d-57.6169304!16s%2Fg%2F11d_8z63lp?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-brand-gray hover:text-brand-gold transition-colors duration-300"
+                >
+                  S. Vicente | ASUNCION
+                </a>
               </div>
             </div>
 
