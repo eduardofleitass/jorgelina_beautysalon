@@ -6,6 +6,7 @@ import GallerySection from './components/GallerySection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import WhatsAppFloat from './components/WhatsAppFloat';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,6 +28,7 @@ function App() {
       <AboutSection />
       <ContactSection />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 }

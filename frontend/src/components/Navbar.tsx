@@ -36,8 +36,8 @@ export default function Navbar({ scrolled }: NavbarProps) {
         {/* Logo */}
         <a href="#inicio" className="flex items-center gap-3 group">
           <Scissors size={28} className="text-brand-gold transition-transform duration-300 group-hover:rotate-12" />
-          <span className="font-[family-name:var(--font-serif)] text-lg font-semibold tracking-wider text-brand-white">
-            JORGELINA
+          <span className="font-[family-name:var(--font-serif)] text-lg font-semibold tracking-wider text-brand-white italic">
+            𝒥𝒪ℛ𝒢ℰℒℐ𝒩𝒜
           </span>
         </a>
 

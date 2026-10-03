@@ -1,5 +1,8 @@
-import { Phone, Instagram, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Instagram, MapPin, Clock, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
+import { crearReserva } from '../services/reservas';
+
+type Estado = 'idle' | 'enviando' | 'ok' | 'error';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -9,14 +12,24 @@ export default function ContactSection() {
     date: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [estado, setEstado] = useState<Estado>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: enviar al backend
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormData({ name: '', phone: '', service: '', date: '', message: '' });
+    setEstado('enviando');
+    setErrorMsg('');
+
+    try {
+      await crearReserva(formData);
+      setEstado('ok');
+      setFormData({ name: '', phone: '', service: '', date: '', message: '' });
+      setTimeout(() => setEstado('idle'), 5000);
+    } catch (err) {
+      setEstado('error');
+      setErrorMsg(err instanceof Error ? err.message : 'Error al enviar la reserva');
+      setTimeout(() => setEstado('idle'), 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -170,12 +183,36 @@ export default function ContactSection() {
                 />
               </div>
 
+              {/* Feedback */}
+              {estado === 'ok' && (
+                <div className="flex items-center gap-2 text-sm text-green-400">
+                  <CheckCircle2 size={16} />
+                  Reserva enviada! Te contactaremos para confirmar el turno.
+                </div>
+              )}
+              {estado === 'error' && (
+                <div className="flex items-center gap-2 text-sm text-red-400">
+                  <AlertCircle size={16} />
+                  {errorMsg}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full md:w-auto px-8 py-3 bg-brand-gold text-brand-black font-semibold tracking-wide hover:bg-brand-gold-light transition-all duration-300 flex items-center justify-center gap-2"
+                disabled={estado === 'enviando'}
+                className="w-full md:w-auto px-8 py-3 bg-brand-gold text-brand-black font-semibold tracking-wide hover:bg-brand-gold-light transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <Send size={16} />
-                {submitted ? 'Mensaje enviado!' : 'Enviar solicitud'}
+                {estado === 'enviando' ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    Enviar solicitud
+                  </>
+                )}
               </button>
             </form>
           </div>
