@@ -31,6 +31,18 @@ for (const s of secciones) {
       if (el === btn) return;
       const rc = el.getBoundingClientRect();
       if (rc.width === 0) return;
+      // Ignorar elementos invisibles (ej: links del menu mobile cerrado)
+      const st = getComputedStyle(el);
+      if (st.visibility === 'hidden' || st.opacity === '0' || st.display === 'none') return;
+      // Ignorar si algun ancestro esta oculto
+      let anc = el.parentElement;
+      let oculto = false;
+      while (anc && anc !== document.body) {
+        const as = getComputedStyle(anc);
+        if (as.visibility === 'hidden' || as.opacity === '0') { oculto = true; break; }
+        anc = anc.parentElement;
+      }
+      if (oculto) return;
       const choca = !(rc.right < b.left || rc.left > b.right || rc.bottom < b.top || rc.top > b.bottom);
       if (choca) solapa.push((el.textContent || el.name || el.type || '').trim().slice(0, 22));
     });
@@ -49,6 +61,8 @@ const enFooter = await p.evaluate(() => {
   let solapa = [];
   document.querySelectorAll('footer a').forEach((el) => {
     const rc = el.getBoundingClientRect();
+    const st = getComputedStyle(el);
+    if (st.visibility === 'hidden' || st.opacity === '0') return;
     const choca = !(rc.right < b.left || rc.left > b.right || rc.bottom < b.top || rc.top > b.bottom);
     if (choca) solapa.push(el.textContent.trim().slice(0, 22));
   });

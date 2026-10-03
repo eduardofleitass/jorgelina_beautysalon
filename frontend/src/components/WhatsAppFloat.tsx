@@ -55,7 +55,7 @@ export default function WhatsAppFloat() {
       aria-label="Reservar por WhatsApp"
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
-      className={`fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center rounded-full bg-brand-gold text-brand-black shadow-lg hover:bg-brand-gold-light active:bg-brand-gold-light transition-all duration-300 group ${
+      className={`fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center rounded-full bg-brand-gold text-brand-black shadow-lg hover:bg-brand-gold-light active:bg-brand-gold-light transition-all duration-300 group menu-float ${
         visible ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'
       }`}
       style={{ width: '3.25rem', height: '3.25rem' }}

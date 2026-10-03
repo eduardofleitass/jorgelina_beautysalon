@@ -104,7 +104,7 @@ if ((await botonHamburguesa.count()) === 0) {
     await botonHamburguesa.click({ timeout: 3000 }).catch(() => {});
     await page.waitForTimeout(700);
     const cerro = await page.evaluate(() => {
-      const overlay = document.querySelector('nav > div.fixed.inset-0');
+      const overlay = document.querySelector('#menu-mobile');
       if (!overlay) return 'sin-overlay';
       const s = getComputedStyle(overlay);
       return s.visibility === 'hidden' || s.opacity === '0' ? 'cerrado' : 'abierto';
