@@ -50,7 +50,7 @@ export default function ServicesSection() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="group relative p-8 border border-white/5 bg-brand-black/50 hover:border-brand-gold/30 transition-all duration-500"
+              className="group relative p-8 border border-brand-white/5 bg-brand-black/50 hover:border-brand-gold/30 transition-all duration-500"
             >
               {/* Icon */}
               <div className="mb-6 w-14 h-14 flex items-center justify-center border border-brand-gold/30 text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500">

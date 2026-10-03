@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/5 bg-brand-black">
+    <footer className="border-t border-brand-white/5 bg-brand-black">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/5 text-center">
+        <div className="mt-8 pt-8 border-t border-brand-white/5 text-center">
           <p className="text-xs text-brand-gray">
             &copy; {currentYear} Jorgelina Beauty Salon. Todos los derechos reservados.
           </p>

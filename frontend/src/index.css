@@ -10,6 +10,11 @@
   --color-brand-white: #fff0f2;
   --color-brand-gray: #a89096;
   --color-brand-gray-light: #d8c4c8;
+
+  --color-success: #8da894;
+  --color-success-light: #a8b8ae;
+  --color-error: #c98a8a;
+  --color-error-light: #d8a8a8;
   
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -38,7 +43,7 @@ body {
   color: var(--color-brand-black);
 }
 
-/* Scrollbar oscuro elegante */
+/* Scrollbar elegante */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -50,5 +55,5 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-gold);
+  background: var(--color-brand-gold-dark);
 }

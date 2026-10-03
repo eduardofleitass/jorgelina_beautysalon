@@ -6,7 +6,6 @@ type Estado = 'idle' | 'enviando' | 'ok' | 'error';
 
 const WA_PHONE = '595985853557';
 
-/** Deep link de WhatsApp con los datos de la reserva pre-cargados */
 function construirWhatsAppLink(datos: {
   name: string;
   phone: string;
@@ -46,7 +45,6 @@ export default function ContactSection() {
     setEstado('enviando');
     setErrorMsg('');
 
-    // Capturar los datos antes de limpiar el formulario
     const datosEnviados = { ...formData };
     const link = construirWhatsAppLink(datosEnviados);
 
@@ -56,7 +54,6 @@ export default function ContactSection() {
       setWaLink(link);
       setFormData({ name: '', phone: '', service: '', date: '', message: '' });
 
-      // Abrir WhatsApp con los datos pre-cargados para confirmar el turno
       window.open(link, '_blank', 'noopener,noreferrer');
 
       setTimeout(() => {
@@ -90,9 +87,8 @@ export default function ContactSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Contact Info */}
           <div className="lg:col-span-2 space-y-8">
-            <div className="p-6 border border-white/5 bg-brand-charcoal/50">
+            <div className="p-6 border border-brand-white/5 bg-brand-charcoal/50">
               <h3 className="font-[family-name:var(--font-serif)] text-xl font-semibold mb-6">
                 Informacion de contacto
               </h3>
@@ -104,7 +100,7 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-brand-gray hover:text-brand-gold transition-colors duration-300 group"
                 >
-                  <div className="w-10 h-10 flex items-center justify-center border border-white/10 group-hover:border-brand-gold/50 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center border border-brand-white/10 group-hover:border-brand-gold/50 transition-colors duration-300">
                     <Phone size={18} />
                   </div>
                   <span className="text-sm">WhatsApp</span>
@@ -116,7 +112,7 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-brand-gray hover:text-brand-gold transition-colors duration-300 group"
                 >
-                  <div className="w-10 h-10 flex items-center justify-center border border-white/10 group-hover:border-brand-gold/50 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center border border-brand-white/10 group-hover:border-brand-gold/50 transition-colors duration-300">
                     <Instagram size={18} />
                   </div>
                   <span className="text-sm">@jorgelinabeautysalon</span>
@@ -128,14 +124,14 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-brand-gray hover:text-brand-gold transition-colors duration-300 group"
                 >
-                  <div className="w-10 h-10 flex items-center justify-center border border-white/10 group-hover:border-brand-gold/50 transition-colors duration-300">
+                  <div className="w-10 h-10 flex items-center justify-center border border-brand-white/10 group-hover:border-brand-gold/50 transition-colors duration-300">
                     <MapPin size={18} />
                   </div>
                   <span className="text-sm">S. Vicente | ASUNCION</span>
                 </a>
 
                 <div className="flex items-start gap-4 text-brand-gray">
-                  <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-white/10">
+                  <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-brand-white/10">
                     <Clock size={18} />
                   </div>
                   <div className="text-sm space-y-1">
@@ -147,11 +143,10 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Form */}
           <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="p-8 border border-white/5 bg-brand-charcoal/30 space-y-6"
+              className="p-8 border border-brand-white/5 bg-brand-charcoal/30 space-y-6"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -162,7 +157,7 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-brand-black border border-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -174,7 +169,7 @@ export default function ContactSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-brand-black border border-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
                     placeholder="+595..."
                   />
                 </div>
@@ -188,7 +183,7 @@ export default function ContactSection() {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-brand-black border border-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300 appearance-none cursor-pointer"
+                    className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300 appearance-none cursor-pointer"
                   >
                     <option value="">Selecciona un servicio</option>
                     <option value="coloracion">Coloracion</option>
@@ -204,7 +199,7 @@ export default function ContactSection() {
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-brand-black border border-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
                   />
                 </div>
               </div>
@@ -216,15 +211,14 @@ export default function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 bg-brand-black border border-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300 resize-none"
                   placeholder="Contanos que necesitas..."
                 />
               </div>
 
-              {/* Feedback */}
               {estado === 'ok' && (
-                <div className="flex flex-col gap-3 p-4 border border-green-500/30 bg-green-500/5">
-                  <div className="flex items-center gap-2 text-sm text-green-400">
+                <div className="flex flex-col gap-3 p-4 border border-success/30 bg-success/5">
+                  <div className="flex items-center gap-2 text-sm text-success-light">
                     <CheckCircle2 size={16} />
                     Reserva enviada! Te contactaremos para confirmar el turno.
                   </div>
@@ -242,7 +236,7 @@ export default function ContactSection() {
                 </div>
               )}
               {estado === 'error' && (
-                <div className="flex items-center gap-2 text-sm text-red-400">
+                <div className="flex items-center gap-2 text-sm text-error-light">
                   <AlertCircle size={16} />
                   {errorMsg}
                 </div>

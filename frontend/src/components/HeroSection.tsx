@@ -53,7 +53,7 @@ export default function HeroSection() {
           </a>
           <a
             href="#servicios"
-            className="px-8 py-3 border border-white/20 text-brand-white font-medium tracking-wide hover:border-brand-gold hover:text-brand-gold transition-all duration-300"
+            className="px-8 py-3 border border-brand-white/20 text-brand-white font-medium tracking-wide hover:border-brand-gold hover:text-brand-gold transition-all duration-300"
           >
             Conoce nuestros servicios
           </a>

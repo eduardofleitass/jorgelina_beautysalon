@@ -44,7 +44,7 @@ export default function AboutSection() {
 
           {/* Right: Info Cards */}
           <div className="space-y-6">
-            <div className="flex items-start gap-5 p-6 border border-white/5 bg-brand-black/30">
+            <div className="flex items-start gap-5 p-6 border border-brand-white/5 bg-brand-black/30">
               <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-brand-gold/30 text-brand-gold">
                 <MapPin size={22} strokeWidth={1.5} />
               </div>
@@ -61,7 +61,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="flex items-start gap-5 p-6 border border-white/5 bg-brand-black/30">
+            <div className="flex items-start gap-5 p-6 border border-brand-white/5 bg-brand-black/30">
               <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-brand-gold/30 text-brand-gold">
                 <Clock size={22} strokeWidth={1.5} />
               </div>
@@ -72,7 +72,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="flex items-start gap-5 p-6 border border-white/5 bg-brand-black/30">
+            <div className="flex items-start gap-5 p-6 border border-brand-white/5 bg-brand-black/30">
               <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center border border-brand-gold/30 text-brand-gold">
                 <Award size={22} strokeWidth={1.5} />
               </div>

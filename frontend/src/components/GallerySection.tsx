@@ -45,7 +45,7 @@ export default function GallerySection() {
           {galleryImages.map((img, idx) => (
             <div
               key={idx}
-              className="group relative aspect-[3/4] overflow-hidden border border-white/5"
+              className="group relative aspect-[3/4] overflow-hidden border border-brand-white/5"
             >
               <img
                 src={img.src}

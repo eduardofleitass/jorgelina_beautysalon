@@ -28,20 +28,18 @@ export default function Navbar({ scrolled }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-brand-black/95 backdrop-blur-md border-b border-white/5 shadow-lg'
+          ? 'bg-brand-black/95 backdrop-blur-md border-b border-brand-white/5 shadow-lg'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
         <a href="#inicio" className="flex items-center gap-3 group">
           <Scissors size={28} className="text-brand-gold transition-transform duration-300 group-hover:rotate-12" />
           <span className="font-[family-name:var(--font-serif)] text-lg font-semibold tracking-wider text-brand-white italic">
-            𝒥𝒪ℛ𝒢ℰℒℐ𝒩𝒜
+            JORGELINA
           </span>
         </a>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
@@ -55,7 +53,6 @@ export default function Navbar({ scrolled }: NavbarProps) {
           ))}
         </div>
 
-        {/* CTA Desktop */}
         <a
           href="#contacto"
           className="hidden md:inline-flex items-center px-5 py-2 text-sm font-medium tracking-wide border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
@@ -63,7 +60,6 @@ export default function Navbar({ scrolled }: NavbarProps) {
           Reservar
         </a>
 
-        {/* Mobile Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-brand-white p-2"
@@ -73,7 +69,6 @@ export default function Navbar({ scrolled }: NavbarProps) {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`md:hidden fixed inset-0 bg-brand-black/98 backdrop-blur-xl transition-all duration-500 ${
           menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
