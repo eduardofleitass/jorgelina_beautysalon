@@ -9,7 +9,13 @@
     "build:backend": "cd backend && npm run build",
     "build:frontend": "cd frontend && npm run build",
     "build": "npm run build:frontend && npm run build:backend",
-    "start": "cd backend && npm run start:prod"
+    "start": "cd backend && npm run start:prod",
+    "prod": "npm run build && npm run start",
+    "audit:mobile": "cd frontend && node audit-mobile.mjs",
+    "audit:devices": "cd frontend && node audit-multidevice.mjs",
+    "audit:float": "cd frontend && node audit-float.mjs",
+    "audit:menu": "cd frontend && node audit-scroll-menu.mjs",
+    "audit": "npm run audit:mobile && npm run audit:devices && npm run audit:float && npm run audit:menu"
   },
   "devDependencies": {
     "concurrently": "^9.0.0"

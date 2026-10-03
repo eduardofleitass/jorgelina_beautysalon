@@ -41,3 +41,7 @@ backend/.env
 frontend/test-results/
 frontend/playwright-report/
 frontend/.playwright/
+
+# Despliegue: backups y logs locales
+deploy/windows/backups/
+logs/
