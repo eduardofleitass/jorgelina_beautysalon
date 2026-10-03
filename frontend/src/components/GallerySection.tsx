@@ -1,12 +1,15 @@
 import { Instagram } from 'lucide-react';
 
 const galleryImages = [
-  { alt: 'Coloracion rubio platino', position: 'bg-[center_30%]' },
-  { alt: 'Balayage dorado', position: 'bg-[center_40%]' },
-  { alt: 'Mechas claras', position: 'bg-[center_35%]' },
-  { alt: 'Manicura roja', position: 'bg-[center_50%]' },
-  { alt: 'Manicura rosa', position: 'bg-[center_45%]' },
-  { alt: 'Peinado elegante', position: 'bg-[center_40%]' },
+  { src: 'foto1.png', alt: 'Balayage dorado con ondas' },
+  { src: 'foto2.jpg', alt: 'Mechas claras en cabello ondulado' },
+  { src: 'foto3.jpg', alt: 'Peinado con trenzas y makeup' },
+  { src: 'foto4.jpg', alt: 'Manicura magenta con detalles' },
+  { src: 'foto5.jpg', alt: 'Manicura roja con dorado' },
+  { src: 'foto6.jpg', alt: 'Peinado trenzado en cabello rubio' },
+  { src: 'foto7.jpg', alt: 'Peinado con trenzas doradas' },
+  { src: 'foto8.jpg', alt: 'Manicura negra con glitter' },
+  { src: 'foto9.jpg', alt: 'Mechas en cabello largo ondulado' },
 ];
 
 export default function GallerySection() {
@@ -33,14 +36,16 @@ export default function GallerySection() {
               key={idx}
               className="group relative aspect-[3/4] overflow-hidden border border-white/5"
             >
-              {/* Placeholder with gradient */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br from-brand-graphite via-brand-charcoal to-brand-black ${img.position}`}
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
               {/* Overlay */}
               <div className="absolute inset-0 bg-brand-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <span className="text-brand-white font-medium tracking-wide">{img.alt}</span>
+                <span className="text-brand-white font-medium tracking-wide text-sm">{img.alt}</span>
               </div>
 
               {/* Corner accent */}

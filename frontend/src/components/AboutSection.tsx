@@ -17,7 +17,7 @@ export default function AboutSection() {
             </h2>
             <p className="text-brand-gray leading-relaxed mb-6">
               En Jorgelina Beauty Salon, cada cliente es tratado con dedicacion y atencion al detalle. 
-              Con anos de experiencia en coloracion, manicura y maquillaje, transformamos tu vision en realidad.
+              Con años de experiencia en coloracion, manicura y maquillaje, transformamos tu vision en realidad.
             </p>
             <p className="text-brand-gray-light/60 leading-relaxed mb-8">
               Ubicados en S. Vicente, Asuncion, nuestro salon combina tecnicas de vanguardia con un ambiente 
