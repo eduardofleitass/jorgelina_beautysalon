@@ -1,8 +1,8 @@
-import { Palette, Sparkles, Brush } from 'lucide-react';
+import { IconTintBrush, IconNailPolish, IconLipstick } from './icons/BeautyIcons';
 
 const services = [
   {
-    icon: Palette,
+    icon: IconTintBrush,
     title: 'Coloracion',
     subtitle: 'Especialista en Color',
     description:
@@ -10,7 +10,7 @@ const services = [
     features: ['Balayage', 'Mechas', 'Rubios Platino', 'Color Fantasy'],
   },
   {
-    icon: Sparkles,
+    icon: IconNailPolish,
     title: 'Nails',
     subtitle: 'Manicura Profesional',
     description:
@@ -18,7 +18,7 @@ const services = [
     features: ['Semipermanente', 'Acrilicas', 'Nail Art', 'Spa de manos'],
   },
   {
-    icon: Brush,
+    icon: IconLipstick,
     title: 'Makeup',
     subtitle: 'Maquillaje Profesional',
     description:
