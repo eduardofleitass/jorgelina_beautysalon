@@ -24,10 +24,11 @@ export default function HeroSection() {
         </div>
 
         {/* Main Title */}
-        <h1 className="font-[family-name:var(--font-serif)] text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-          <span className="text-brand-white">JORGELINA</span>
-          <br />
-          <span className="text-brand-gold text-3xl md:text-5xl lg:text-6xl font-light italic">
+        <h1 className="mb-8">
+          <span className="block font-[family-name:var(--font-script)] text-brand-gold text-6xl md:text-8xl lg:text-9xl leading-[0.9] drop-shadow-[0_2px_20px_rgba(240,184,192,0.15)]">
+            Jorgelina
+          </span>
+          <span className="block font-[family-name:var(--font-script)] text-brand-white text-5xl md:text-7xl lg:text-8xl leading-[1.1] mt-2">
             Acosta
           </span>
         </h1>
