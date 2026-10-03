@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex items-center gap-3">
             <Scissors size={20} className="text-brand-gold" />
-            <span className="font-[family-name:var(--font-serif)] text-lg font-semibold tracking-wider text-brand-white">
+            <span className="font-[family-name:var(--font-serif)] text-lg font-semibold tracking-wider text-brand-white italic">
               JORGELINA
             </span>
           </div>

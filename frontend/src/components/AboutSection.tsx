@@ -29,7 +29,7 @@ export default function AboutSection() {
             <div className="grid grid-cols-3 gap-6">
               <div className="text-center">
                 <span className="block font-[family-name:var(--font-serif)] text-3xl font-bold text-brand-gold">7+</span>
-                <span className="text-xs text-brand-gray uppercase tracking-wider">Anos de exp.</span>
+                <span className="text-xs text-brand-gray uppercase tracking-wider">Años de exp.</span>
               </div>
               <div className="text-center">
                 <span className="block font-[family-name:var(--font-serif)] text-3xl font-bold text-brand-gold">700+</span>
