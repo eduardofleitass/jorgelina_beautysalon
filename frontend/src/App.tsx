@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-brand-black text-brand-white antialiased">
+    <div className="min-h-screen bg-brand-black text-brand-white antialiased overflow-x-hidden">
       <Navbar scrolled={scrolled} />
       <HeroSection />
       <ServicesSection />

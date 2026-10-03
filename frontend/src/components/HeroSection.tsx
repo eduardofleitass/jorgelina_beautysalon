@@ -9,52 +9,53 @@ export default function HeroSection() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-charcoal to-brand-graphite" />
       
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand-gold/3 rounded-full blur-3xl" />
+      {/* Decorative elements (contenidos con overflow-hidden en el section) */}
+      <div className="absolute top-1/4 -left-32 w-64 md:w-96 h-64 md:h-96 bg-brand-gold/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-32 w-64 md:w-96 h-64 md:h-96 bg-brand-gold/3 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      {/* Padding superior para librar el navbar fijo + inferior para el boton flotante */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 pt-24 pb-32 sm:pt-28 sm:pb-28 text-center">
         {/* Tagline */}
-        <div className="mb-6 flex items-center justify-center gap-4">
-          <span className="h-px w-12 bg-brand-gold/60" />
-          <span className="text-brand-gold text-xs tracking-[0.3em] uppercase font-medium">
+        <div className="mb-4 sm:mb-6 flex items-center justify-center gap-3 sm:gap-4">
+          <span className="h-px w-8 sm:w-12 bg-brand-gold/60" />
+          <span className="text-brand-gold text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase font-medium whitespace-nowrap">
             Beauty Salon
           </span>
-          <span className="h-px w-12 bg-brand-gold/60" />
+          <span className="h-px w-8 sm:w-12 bg-brand-gold/60" />
         </div>
 
         {/* Main Title */}
-        <h1 className="mb-8">
-          <span className="block font-[family-name:var(--font-script)] text-brand-gold text-6xl md:text-8xl lg:text-9xl leading-[0.9] drop-shadow-[0_2px_20px_rgba(240,184,192,0.15)]">
+        <h1 className="mb-6 sm:mb-8">
+          <span className="block font-[family-name:var(--font-script)] text-brand-gold text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-[0.9] drop-shadow-[0_2px_20px_rgba(240,184,192,0.15)]">
             Jorgelina
           </span>
-          <span className="block font-[family-name:var(--font-script)] text-brand-white text-5xl md:text-7xl lg:text-8xl leading-[1.1] mt-2">
+          <span className="block font-[family-name:var(--font-script)] text-brand-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[1.1] mt-2">
             Acosta
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-brand-gray text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+        <p className="text-brand-gray text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-3 sm:mb-4 leading-relaxed">
           Especialista en Color &middot; Nails &middot; Makeup
         </p>
-        <p className="text-brand-gray-light/60 text-sm md:text-base max-w-xl mx-auto mb-10">
+        <p className="text-brand-gray-light/60 text-sm md:text-base max-w-xl mx-auto mb-8 sm:mb-10">
           Transformando tu look con tecnicas profesionales en el corazon de Asuncion.
           Cada detalle cuenta, cada color importa.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <a
             href="https://api.whatsapp.com/send?phone=595985853557"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 bg-brand-gold text-brand-black font-semibold tracking-wide hover:bg-brand-gold-light transition-all duration-300"
+            className="w-full sm:w-auto px-8 py-3.5 bg-brand-gold text-brand-black font-semibold tracking-wide hover:bg-brand-gold-light active:bg-brand-gold-light transition-all duration-300"
           >
             Agenda tu turno
           </a>
           <a
             href="#servicios"
-            className="px-8 py-3 border border-brand-white/20 text-brand-white font-medium tracking-wide hover:border-brand-gold hover:text-brand-gold transition-all duration-300"
+            className="w-full sm:w-auto px-8 py-3.5 border border-brand-white/20 text-brand-white font-medium tracking-wide hover:border-brand-gold hover:text-brand-gold active:border-brand-gold active:text-brand-gold transition-all duration-300"
           >
             Conoce nuestros servicios
           </a>
@@ -64,7 +65,8 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <a
         href="#servicios"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand-gray hover:text-brand-gold transition-colors duration-300 animate-bounce"
+        aria-label="Ir a servicios"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center w-11 h-11 text-brand-gray hover:text-brand-gold transition-colors duration-300 animate-bounce"
       >
         <ChevronDown size={24} />
       </a>

@@ -36,3 +36,8 @@ backend/data/*.json
 
 # Credenciales de notificacion (CallMeBot apikey)
 backend/.env
+
+# Playwright
+frontend/test-results/
+frontend/playwright-report/
+frontend/.playwright/

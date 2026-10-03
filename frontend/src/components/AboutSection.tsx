@@ -2,7 +2,7 @@ import { MapPin, Clock, Award } from 'lucide-react';
 
 export default function AboutSection() {
   return (
-    <section id="nosotros" className="relative py-24 md:py-32 bg-brand-charcoal">
+    <section id="nosotros" className="relative py-20 md:py-32 bg-brand-charcoal scroll-mt-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content */}
@@ -26,18 +26,18 @@ export default function AboutSection() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6">
               <div className="text-center">
-                <span className="block font-[family-name:var(--font-serif)] text-3xl font-bold text-brand-gold">7+</span>
-                <span className="text-xs text-brand-gray uppercase tracking-wider">Años de exp.</span>
+                <span className="block font-[family-name:var(--font-serif)] text-2xl sm:text-3xl font-bold text-brand-gold">7+</span>
+                <span className="text-[10px] sm:text-xs text-brand-gray uppercase tracking-wide sm:tracking-wider">Anos de exp.</span>
               </div>
               <div className="text-center">
-                <span className="block font-[family-name:var(--font-serif)] text-3xl font-bold text-brand-gold">700+</span>
-                <span className="text-xs text-brand-gray uppercase tracking-wider">Clientes felices</span>
+                <span className="block font-[family-name:var(--font-serif)] text-2xl sm:text-3xl font-bold text-brand-gold">700+</span>
+                <span className="text-[10px] sm:text-xs text-brand-gray uppercase tracking-wide sm:tracking-wider">Clientes</span>
               </div>
               <div className="text-center">
-                <span className="block font-[family-name:var(--font-serif)] text-3xl font-bold text-brand-gold">300+</span>
-                <span className="text-xs text-brand-gray uppercase tracking-wider">Publicaciones</span>
+                <span className="block font-[family-name:var(--font-serif)] text-2xl sm:text-3xl font-bold text-brand-gold">300+</span>
+                <span className="text-[10px] sm:text-xs text-brand-gray uppercase tracking-wide sm:tracking-wider">Publicaciones</span>
               </div>
             </div>
           </div>

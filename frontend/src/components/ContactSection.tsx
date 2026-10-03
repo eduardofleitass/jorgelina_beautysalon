@@ -82,7 +82,7 @@ export default function ContactSection() {
   const completo = formData.name && formData.service && formData.date;
 
   return (
-    <section id="contacto" className="relative py-24 md:py-32 bg-brand-black">
+    <section id="contacto" className="relative py-20 md:py-32 bg-brand-black scroll-mt-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-brand-gold text-xs tracking-[0.3em] uppercase font-medium">
