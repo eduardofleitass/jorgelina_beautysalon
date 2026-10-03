@@ -2,9 +2,10 @@ import { api } from '../config/api';
 
 export interface ReservaPayload {
   name: string;
-  phone: string;
   service: string;
   date?: string;
+  /** Opcional: el formulario simplificado ya no lo pide */
+  phone?: string;
   message?: string;
 }
 

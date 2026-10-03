@@ -1,61 +1,69 @@
-import { Phone, Instagram, MapPin, Clock, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Phone, Instagram, MapPin, Clock, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import { crearReserva } from '../services/reservas';
 
-type Estado = 'idle' | 'enviando' | 'ok' | 'error';
+type Estado = 'idle' | 'ok' | 'error';
 
 const WA_PHONE = '595985853557';
 
-function construirWhatsAppLink(datos: {
-  name: string;
-  phone: string;
-  service: string;
-  date: string;
-  message: string;
-}): string {
-  const lineas = [
-    'Hola! Quiero confirmar mi reserva:',
-    '',
-    `Nombre: ${datos.name}`,
-    `Telefono: ${datos.phone}`,
-    `Servicio: ${datos.service}`,
-  ];
-  if (datos.date) lineas.push(`Fecha preferida: ${datos.date}`);
-  if (datos.message) lineas.push(`Detalle: ${datos.message}`);
+/** Etiquetas legibles para cada servicio */
+const SERVICIOS: Record<string, string> = {
+  coloracion: 'coloracion',
+  nails: 'nails',
+  makeup: 'makeup',
+};
 
+/** Formatea la fecha ISO (yyyy-mm-dd) a un texto legible: "15 de octubre de 2026" */
+function formatearFecha(iso: string): string {
+  if (!iso) return '';
+  const [anio, mes, dia] = iso.split('-').map(Number);
+  if (!anio || !mes || !dia) return iso;
+  const fecha = new Date(anio, mes - 1, dia);
+  return fecha.toLocaleDateString('es-PY', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+}
+
+/**
+ * Mensaje personalizado para el WhatsApp del salon:
+ * "Buenas soy (Nombre) quisiera agendar una cita para (servicio)
+ *  en la fecha (fecha), cuentan con turnos disponibles?"
+ */
+function construirMensaje(datos: { name: string; service: string; date: string }): string {
+  const servicio = SERVICIOS[datos.service] || datos.service;
+  const fecha = formatearFecha(datos.date);
+  return `Buenas soy ${datos.name} quisiera agendar una cita para ${servicio} en la fecha ${fecha}, cuentan con turnos disponibles?`;
+}
+
+function construirWhatsAppLink(datos: { name: string; service: string; date: string }): string {
   return `https://api.whatsapp.com/send?phone=${WA_PHONE}&text=${encodeURIComponent(
-    lineas.join('\n'),
+    construirMensaje(datos),
   )}`;
 }
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    service: '',
-    date: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', service: '', date: '' });
   const [estado, setEstado] = useState<Estado>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [waLink, setWaLink] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setEstado('enviando');
     setErrorMsg('');
 
     const datosEnviados = { ...formData };
     const link = construirWhatsAppLink(datosEnviados);
 
+    // Abrir WhatsApp inmediatamente (evita el bloqueo de popup del navegador)
+    window.open(link, '_blank', 'noopener,noreferrer');
+    setWaLink(link);
+
     try {
       await crearReserva(datosEnviados);
       setEstado('ok');
-      setWaLink(link);
-      setFormData({ name: '', phone: '', service: '', date: '', message: '' });
-
-      window.open(link, '_blank', 'noopener,noreferrer');
-
+      setFormData({ name: '', service: '', date: '' });
       setTimeout(() => {
         setEstado('idle');
         setWaLink('');
@@ -67,9 +75,11 @@ export default function ContactSection() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const completo = formData.name && formData.service && formData.date;
 
   return (
     <section id="contacto" className="relative py-24 md:py-32 bg-brand-black">
@@ -82,7 +92,7 @@ export default function ContactSection() {
             Agenda tu<span className="text-brand-gold italic"> cita</span>
           </h2>
           <p className="text-brand-gray max-w-xl mx-auto">
-            Completa el formulario y te contactaremos para confirmar tu turno.
+            Completa tus datos y te confirmamos el turno por WhatsApp.
           </p>
         </div>
 
@@ -148,31 +158,17 @@ export default function ContactSection() {
               onSubmit={handleSubmit}
               className="p-8 border border-brand-white/5 bg-brand-charcoal/30 space-y-6"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs text-brand-gray uppercase tracking-wider mb-2">Nombre</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-brand-gray uppercase tracking-wider mb-2">Telefono</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
-                    placeholder="+595..."
-                  />
-                </div>
+              <div>
+                <label className="block text-xs text-brand-gray uppercase tracking-wider mb-2">Nombre</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
+                  placeholder="Tu nombre"
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -193,34 +189,35 @@ export default function ContactSection() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs text-brand-gray uppercase tracking-wider mb-2">Fecha preferida</label>
+                  <label className="block text-xs text-brand-gray uppercase tracking-wider mb-2">Fecha</label>
                   <input
                     type="date"
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-xs text-brand-gray uppercase tracking-wider mb-2">Mensaje</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-3 bg-brand-black border border-brand-white/10 text-brand-white text-sm focus:border-brand-gold focus:outline-none transition-colors duration-300 resize-none"
-                  placeholder="Contanos que necesitas..."
-                />
-              </div>
+              {/* Vista previa del mensaje que se enviara */}
+              {completo && (
+                <div className="p-4 border border-brand-white/10 bg-brand-black/40">
+                  <span className="block text-[10px] text-brand-gray uppercase tracking-wider mb-2">
+                    Mensaje que se enviara por WhatsApp
+                  </span>
+                  <p className="text-sm text-brand-gray-light italic leading-relaxed">
+                    "{construirMensaje(formData)}"
+                  </p>
+                </div>
+              )}
 
               {estado === 'ok' && (
                 <div className="flex flex-col gap-3 p-4 border border-success/30 bg-success/5">
                   <div className="flex items-center gap-2 text-sm text-success-light">
                     <CheckCircle2 size={16} />
-                    Reserva enviada! Te contactaremos para confirmar el turno.
+                    Abrimos WhatsApp para que confirmes tu turno!
                   </div>
                   {waLink && (
                     <a
@@ -230,7 +227,7 @@ export default function ContactSection() {
                       className="inline-flex items-center gap-2 text-sm text-brand-gold hover:text-brand-gold-light transition-colors duration-300"
                     >
                       <Send size={14} />
-                      Si WhatsApp no se abrio, toca aqui para confirmar tu turno
+                      Si WhatsApp no se abrio, toca aqui
                     </a>
                   )}
                 </div>
@@ -244,20 +241,10 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                disabled={estado === 'enviando'}
-                className="w-full md:w-auto px-8 py-3 bg-brand-gold text-brand-black font-semibold tracking-wide hover:bg-brand-gold-light transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full md:w-auto px-8 py-3 bg-brand-gold text-brand-black font-semibold tracking-wide hover:bg-brand-gold-light transition-all duration-300 flex items-center justify-center gap-2"
               >
-                {estado === 'enviando' ? (
-                  <>
-                    <Loader2 size={16} className="animate-spin" />
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    <Send size={16} />
-                    Enviar solicitud
-                  </>
-                )}
+                <Send size={16} />
+                Agendar por WhatsApp
               </button>
             </form>
           </div>

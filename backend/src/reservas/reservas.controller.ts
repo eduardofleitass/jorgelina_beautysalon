@@ -26,13 +26,13 @@ export class ReservasController {
 
   @Post()
   async create(@Body() body: Partial<Reserva>): Promise<Reserva & { notificado: boolean }> {
-    if (!body.name || !body.phone || !body.service) {
-      throw new BadRequestException('Nombre, telefono y servicio son obligatorios');
+    if (!body.name || !body.service) {
+      throw new BadRequestException('Nombre y servicio son obligatorios');
     }
 
     const reserva = this.reservasService.create({
       name: body.name,
-      phone: body.phone,
+      phone: body.phone || '',
       service: body.service,
       date: body.date || '',
       message: body.message || '',
