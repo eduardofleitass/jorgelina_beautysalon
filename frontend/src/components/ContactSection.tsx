@@ -48,7 +48,7 @@ export default function ContactSection() {
               
               <div className="space-y-5">
                 <a
-                  href="https://wa.me/595?text=Hola%20Jorgelina!%20Quiero%20reservar%20un%20turno"
+                  href="https://api.whatsapp.com/send?phone=595985853557\u0026text=Buenas%20Jorgelina%20Coiffure%20quisiera%20hacer%20una%20reserva%20"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-brand-gray hover:text-brand-gold transition-colors duration-300 group"
