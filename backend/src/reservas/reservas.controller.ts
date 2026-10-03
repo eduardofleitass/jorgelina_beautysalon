@@ -1,9 +1,13 @@
 import { Controller, Get, Post, Body, BadRequestException } from '@nestjs/common';
 import { ReservasService, Reserva } from './reservas.service';
+import { NotificacionService } from './notificacion.service';
 
 @Controller('api/reservas')
 export class ReservasController {
-  constructor(private readonly reservasService: ReservasService) {}
+  constructor(
+    private readonly reservasService: ReservasService,
+    private readonly notificacionService: NotificacionService,
+  ) {}
 
   @Get()
   findAll(): Reserva[] {
@@ -15,17 +19,28 @@ export class ReservasController {
     return { total: this.reservasService.count() };
   }
 
+  @Get('notificacion-estado')
+  estadoNotificacion(): { configurado: boolean } {
+    return { configurado: this.notificacionService.configurado };
+  }
+
   @Post()
-  create(@Body() body: Partial<Reserva>): Reserva {
+  async create(@Body() body: Partial<Reserva>): Promise<Reserva & { notificado: boolean }> {
     if (!body.name || !body.phone || !body.service) {
       throw new BadRequestException('Nombre, telefono y servicio son obligatorios');
     }
-    return this.reservasService.create({
+
+    const reserva = this.reservasService.create({
       name: body.name,
       phone: body.phone,
       service: body.service,
       date: body.date || '',
       message: body.message || '',
     });
+
+    // Notificacion al WhatsApp del salon (no bloquea ni rompe el guardado)
+    const notificado = await this.notificacionService.notificarReserva(reserva);
+
+    return { ...reserva, notificado };
   }
 }

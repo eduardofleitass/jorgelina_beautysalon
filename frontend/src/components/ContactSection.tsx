@@ -4,6 +4,31 @@ import { crearReserva } from '../services/reservas';
 
 type Estado = 'idle' | 'enviando' | 'ok' | 'error';
 
+const WA_PHONE = '595985853557';
+
+/** Deep link de WhatsApp con los datos de la reserva pre-cargados */
+function construirWhatsAppLink(datos: {
+  name: string;
+  phone: string;
+  service: string;
+  date: string;
+  message: string;
+}): string {
+  const lineas = [
+    'Hola! Quiero confirmar mi reserva:',
+    '',
+    `Nombre: ${datos.name}`,
+    `Telefono: ${datos.phone}`,
+    `Servicio: ${datos.service}`,
+  ];
+  if (datos.date) lineas.push(`Fecha preferida: ${datos.date}`);
+  if (datos.message) lineas.push(`Detalle: ${datos.message}`);
+
+  return `https://api.whatsapp.com/send?phone=${WA_PHONE}&text=${encodeURIComponent(
+    lineas.join('\n'),
+  )}`;
+}
+
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,17 +39,30 @@ export default function ContactSection() {
   });
   const [estado, setEstado] = useState<Estado>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [waLink, setWaLink] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setEstado('enviando');
     setErrorMsg('');
 
+    // Capturar los datos antes de limpiar el formulario
+    const datosEnviados = { ...formData };
+    const link = construirWhatsAppLink(datosEnviados);
+
     try {
-      await crearReserva(formData);
+      await crearReserva(datosEnviados);
       setEstado('ok');
+      setWaLink(link);
       setFormData({ name: '', phone: '', service: '', date: '', message: '' });
-      setTimeout(() => setEstado('idle'), 5000);
+
+      // Abrir WhatsApp con los datos pre-cargados para confirmar el turno
+      window.open(link, '_blank', 'noopener,noreferrer');
+
+      setTimeout(() => {
+        setEstado('idle');
+        setWaLink('');
+      }, 12000);
     } catch (err) {
       setEstado('error');
       setErrorMsg(err instanceof Error ? err.message : 'Error al enviar la reserva');
@@ -185,9 +223,22 @@ export default function ContactSection() {
 
               {/* Feedback */}
               {estado === 'ok' && (
-                <div className="flex items-center gap-2 text-sm text-green-400">
-                  <CheckCircle2 size={16} />
-                  Reserva enviada! Te contactaremos para confirmar el turno.
+                <div className="flex flex-col gap-3 p-4 border border-green-500/30 bg-green-500/5">
+                  <div className="flex items-center gap-2 text-sm text-green-400">
+                    <CheckCircle2 size={16} />
+                    Reserva enviada! Te contactaremos para confirmar el turno.
+                  </div>
+                  {waLink && (
+                    <a
+                      href={waLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-brand-gold hover:text-brand-gold-light transition-colors duration-300"
+                    >
+                      <Send size={14} />
+                      Si WhatsApp no se abrio, toca aqui para confirmar tu turno
+                    </a>
+                  )}
                 </div>
               )}
               {estado === 'error' && (

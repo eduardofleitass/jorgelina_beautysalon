@@ -33,3 +33,6 @@ logs/
 # Datos de usuario (reservas de clientes) - privacidad
 backend/data/*.json
 !backend/data/.gitkeep
+
+# Credenciales de notificacion (CallMeBot apikey)
+backend/.env
